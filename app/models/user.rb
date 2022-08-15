@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   acts_as_token_authenticatable
 
+  has_many :favorites
+
 end

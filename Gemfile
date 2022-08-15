@@ -18,7 +18,8 @@ gem 'puma', '~> 4.1'
 gem "devise"
 gem "simple_token_authentication"
 gem 'rails_admin', '~> 2.0'
-
+gem 'active_model_serializers'
+gem 'aws-sdk-s3', require: false
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

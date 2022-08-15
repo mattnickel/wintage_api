@@ -1,11 +1,17 @@
 class Api::V1::ProductsController < ApplicationController
 	before_action :set_product, only: [:show, :update, :destroy]
 
+
   # GET /products
   def index
-    @products = Product.all
-
-    render json: @products
+    if params[:category]
+      @products = Product.joins(:categories).where(categories: {name: params[:category]})
+      # @products = Product.all
+    else
+      @products = Product.all
+    end
+    
+    render json: @products, :except => [:id, :created_at, :updated_at]
   end
 
   # GET /products/1
@@ -43,9 +49,10 @@ class Api::V1::ProductsController < ApplicationController
     def set_product
       @product = Product.find(params[:id])
     end
+   
 
     # Only allow a trusted parameter "white list" through.
     def product_params
-      params.require(:product).permit(:name, :string)
+      params.require(:product).permit(:name, :description, :image, :price)
     end
 end

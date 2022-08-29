@@ -6,7 +6,7 @@ class Api::V1::ProductsController < ApplicationController
   def index
     if params[:category]
       @products = Product.joins(:categories).where(categories: {name: params[:category]})
-      # @products = Product.all
+  
     else
       @products = Product.all
     end

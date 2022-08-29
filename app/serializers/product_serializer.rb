@@ -9,6 +9,7 @@ class ProductSerializer < ActiveModel::Serializer
   end
 
   def my_favorite
-    return "true" if object.favorites.where(heart: true, user: scope.current_user).length > 0 
+    # return "true" if object.favorites.where(heart: true, user: scope.current_user).length > 0
+  end
 
 end
